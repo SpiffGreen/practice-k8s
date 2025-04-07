@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: lk-app-frontend
+  labels:
+    name: frontend
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+        - name: lk-app-frontend
+          image: localhost:5000/lk-app-frontend:latest

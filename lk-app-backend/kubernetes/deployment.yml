@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lk-app-backend
+spec:
+  selector:
+    matchLabels:
+      name: lk-app-backend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: lk-app-backend
+    spec:
+      containers:
+      - name: lk-app-backend
+        image: localhost:5000/lk-app-backend:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
